@@ -77,7 +77,7 @@
             $_SESSION['eventlogged']=1;
         }
         elseif (strcmp($_POST['UserM'], 'Izhod!')==0){
-            writeEvent('zasebni');
+            writeEvent('sluzbeni');
             $_SESSION['eventlogged']=1;
         }
         elseif (strcmp($_POST['UserM'], 'Popravek!')==0 && !empty($_POST['UserTRP']) && array_key_exists($_POST['UserTRP'], $allowedUserEvents)){
