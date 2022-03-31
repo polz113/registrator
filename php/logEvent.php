@@ -5,7 +5,7 @@
         $t = time();
         if (isset($usertime)){
             [ $h, $m ] = explode($usertime, ":");
-            $t = strtotime('today') + 60*(((int)60)*$h + ((int)$m));
+            $t = strtotime('today') + 60*((60*(int)$h) + ((int)$m));
         }
         $logtxt=$_SESSION['employeeID'].",".date("m/d/Y", $t).",".date("H:i:s", $t).",".$event."\n";
         $logtxt = iconv("UTF-8", "UTF-16LE", $logtxt);
@@ -26,7 +26,7 @@
         $t = time();
         if (isset($usertime)){
             [ $h, $m ] = explode($usertime, ":");
-            $t = strtotime('today') + 60*(((int)60)*$h + ((int)$m));
+            $t = strtotime('today') + 60*((60*(int)$h) + ((int)$m));
         }
         $logtxt = date("Y-m-d\TH:i:s", $t) . "," . $event . "\n";
         if (flock($file, LOCK_EX)) {  // acquire an exclusive lock
