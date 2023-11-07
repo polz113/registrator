@@ -4,7 +4,7 @@
         $file = fopen("logs/registratorLog.csv", "a") or die("Unable to open file!");
         $t = time();
         if (isset($usertime)){
-            [ $h, $m ] = explode($usertime, ":");
+            [ $h, $m ] = explode(":", $usertime);
             $t = strtotime('today') + 60*((60*(int)$h) + ((int)$m));
         }
         $logtxt=$_SESSION['employeeID'].",".date("m/d/Y", $t).",".date("H:i:s", $t).",".$event."\n";
@@ -25,7 +25,7 @@
         $file = fopen("spool/".$user."/fixes.csv", "a") or die("Unable to open file!");
         $t = time();
         if (isset($usertime)){
-            [ $h, $m ] = explode($usertime, ":");
+            [ $h, $m ] = explode(":", $usertime);
             $t = strtotime('today') + 60*((60*(int)$h) + ((int)$m));
         }
         $logtxt = date("Y-m-d\TH:i:s", $t) . "," . $event . "\n";
