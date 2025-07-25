@@ -199,7 +199,7 @@ echo '<li>' . implode( '</li><li>', $new_events) . '</li>';
                         <div class="relative">
                         <ul>
 <?PHP
-echo '<li>' . implode( '</li><li>', $old_events) . '</li>';
+// echo '<li>' . implode( '</li><li>', $old_events) . '</li>';
 ?>
                         </ul>
                         </div>
