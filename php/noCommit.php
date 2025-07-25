@@ -2,8 +2,8 @@
 
     function writeNoCommit($nocommit){ 
         $user = $_SESSION['employeeID'];
-        $user = preg_replace("/[^0-9]+/", "", $user);
-        $file = fopen("spool/".$user."/nocommit.csv", "a") or die("Unable to open file!");
+        // $user = preg_replace("/[^0-9]+/", "", $user);
+        $file = fopen("spool/".basename($user)."/nocommit.csv", "a") or die("Unable to open file!");
         $t = time();
         $logtxt = date("Y-m-d\TH:i:s", $t) . "," . $nocommit . "\n";
         if (flock($file, LOCK_EX)) {  // acquire an exclusive lock
@@ -18,9 +18,9 @@
 
     function readNoCommit(){ 
         $user = $_SESSION['employeeID'];
-        $user = preg_replace("/[^0-9]+/", "", $user);
-	$file = fopen("spool/".$user."/nocommit.csv", "r");
-	$ret = False;
+        // $user = preg_replace("/[^0-9]+/", "", $user);
+        $file = fopen("spool/".basename($user)."/nocommit.csv", "r");
+        $ret = False;
         if (!$file) return False;
         try {
             assert(flock($file, LOCK_EX));  // acquire an exclusive lock
