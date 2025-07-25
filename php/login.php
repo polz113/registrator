@@ -52,7 +52,7 @@
         $info = ldap_get_entries($ldap_conn, $sr);
         return array((isset($info[0]['employeeid'][0]) ? $info[0]['employeeid'][0] : ""), (isset($info[0]['displayname'][0]) ? $info[0]['displayname'][0] : ""));
     }
-    if (!empty($_SESSION['username'])&&empty($_POST['UserEL'])){
+    if (!empty($_SESSION['username'])&&!empty($_SESSION['employeeID'])&&empty($_POST['UserEL'])){
         header('Location: reg.php');
         exit();
     }
