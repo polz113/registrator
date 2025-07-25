@@ -1,11 +1,15 @@
 <?PHP
-    //Include the configuration
-    require_once('./conf/conf.php');
+    session_start();
     //Include the errorReport function
     require_once('./php/errorReport.php');
     //Include the logEvent function
     require_once('./php/logEvent.php');
     require_once('./php/noCommit.php');
+    //Redirect to index / login if no user is set
+    if (empty($_SESSION['username'])){
+        header('Location: /');
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -54,24 +58,24 @@
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                     <h1 class="text-1xl font-bold text-gray-900">
-                        Registrator FRI - Pozdravljeni <?PHP echo $_SESSION['displayName']?>!
+			Registrator FRI - Pozdravljeni <?PHP echo $_SESSION['displayName']?>!
                     </h1>
                 </div>
             </header>
             <main>
                 <?PHP if (!empty($_SESSION['eventlogged']) || !empty($_SESSION['errorreport'])) :?>
-                    <div class="max-w-7xl mx-auto pt-4 sm:px-6 lg:px-8">
-                        <div class="w-full">                    
-                            <?PHP if (!empty($_SESSION['eventlogged'])) :?>
-                                <div class="flex justify-center bg-transparent text-orange-700 font-semibold py-2 px-4 border border-green-500 rounded">Dogodek je bil zabeležen.</div>
-                                <?PHP unset($_SESSION['eventlogged']); ?>
-                            <?PHP endif; ?>
-                            <?PHP if (!empty($_SESSION['errorreport'])) :?>
-                                <div class="flex justify-center bg-transparent text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded"><?PHP echo $_SESSION['errorreport']; ?></div>
-                                <?PHP unset($_SESSION['errorreport']); ?>
-                            <?PHP endif; ?>
-                        </div>
+                <div class="max-w-7xl mx-auto pt-4 sm:px-6 lg:px-8">
+                    <div class="w-full">
+                        <?PHP if (!empty($_SESSION['eventlogged'])) :?>
+                            <div class="flex justify-center bg-transparent text-orange-700 font-semibold py-2 px-4 border border-green-500 rounded">Dogodek je bil zabeležen.</div>
+                        <?PHP unset($_SESSION['eventlogged']); ?>
+                        <?PHP endif; ?>
+                        <?PHP if (!empty($_SESSION['errorreport'])) :?>
+                            <div class="flex justify-center bg-transparent text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded"><?PHP echo $_SESSION['errorreport']; ?></div>
+                            <?PHP unset($_SESSION['errorreport']); ?>
+                        <?PHP endif; ?>
                     </div>
+                </div>
                 <?PHP endif; ?>
                 <div class="max-w-7xl mx-auto py-4 sm:px-6 lg:px-8">
                     <div class="border-b border-t border-gray-200 sm:border sm:rounded-lg overflow-hidden">
