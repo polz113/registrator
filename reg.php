@@ -6,7 +6,7 @@
     require_once('./php/logEvent.php');
     require_once('./php/noCommit.php');
     //Redirect to index / login if no user is set
-    if (empty($_SESSION['username'])){
+    if (empty($_SESSION['username'])||empty($_SESSION['employeeID'])){
         header('Location: /');
         exit();
     }
