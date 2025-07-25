@@ -10,6 +10,7 @@
         header('Location: /');
         exit();
     }
+    require_once('./php/eventLists.php');
 ?>
 
 <!DOCTYPE html>
@@ -161,6 +162,46 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-7xl mx-auto py-4 sm:px-6 lg:px-8">
+                    <div class="border-b border-t border-gray-200 sm:border sm:rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <div class="px-4 border-b border-gray-200 flex flex-col justify-left items-left bg-white sm:px-6 sm:items-baseline">
+                                <div class="flex-shrink min-w-0 flex items-center">
+                                    <p class="mt-2 w-full text-md font-bold text-gray-900">
+                                        Zaznani dogodki (danes)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                        <ul>
+<?PHP
+echo '<li>' . implode( '</li><li>', $new_events) . '</li>';
+?>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-7xl mx-auto py-4 sm:px-6 lg:px-8">
+                    <div class="border-b border-t border-gray-200 sm:border sm:rounded-lg overflow-hidden">
+                        <div class="relative">
+                            <div class="px-4 border-b border-gray-200 flex flex-col justify-left items-left bg-white sm:px-6 sm:items-baseline">
+                                <div class="flex-shrink min-w-0 flex items-center">
+                                    <p class="mt-2 w-full text-md font-bold text-gray-900">
+                                        Obdelani dogodki
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                        <ul>
+<?PHP
+echo '<li>' . implode( '</li><li>', $old_events) . '</li>';
+?>
+                        </ul>
                         </div>
                     </div>
                 </div>
