@@ -59,7 +59,7 @@
     // Check for data from Apache OIDC
     if (!empty($_SERVER['PHP_AUTH_USER'])){
         $displayname=base64_decode($_SERVER['OIDC_CLAIM_name']);
-        $userData=array($_SERVER['PHP_AUTH_USER'], $displayname);
+        $userData=array(strtolower($_SERVER['PHP_AUTH_USER']), $displayname);
         login($_SERVER['PHP_AUTH_USER'], $userData);
     } // Fallback to LDAP
     elseif (!empty($_POST["UserL"])&&!empty($_POST["UserPL"]&&!empty($_POST["UserDL"]))){
