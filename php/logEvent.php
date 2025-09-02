@@ -41,7 +41,7 @@
     }
 
     function writeEvent($event, $usertime=NULL){
-        writeEventOld($event, $usertime);
+        // writeEventOld($event, $usertime);
         writeEventNew($event, $usertime);
     }
 
