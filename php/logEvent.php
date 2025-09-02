@@ -22,7 +22,8 @@
     function writeEventNew($event, $usertime=NULL){ 
         $user = $_SESSION['employeeID'];
         // $user = preg_replace("/[^0-9]+/", "", $user);
-        $file = fopen("spool/".basename($user)."/fixes.csv", "a") or die("Unable to open file!");
+        $fname = "spool/".basename($user)."/fixes.csv";
+        $file = fopen($fname, "a") or die("Unable to open file: $fname !");
         $t = time();
         if (isset($usertime)){
             [ $h, $m ] = explode(":", $usertime);
